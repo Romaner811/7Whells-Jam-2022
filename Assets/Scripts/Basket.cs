@@ -12,8 +12,6 @@ public class Basket : MonoBehaviour
 
     public UnityEvent OnScore;
 
-    List<Fruit>
-
     private void Start()
     {
         
