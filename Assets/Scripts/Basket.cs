@@ -3,13 +3,9 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public class Basket : MonoBehaviour
+public class Basket : FruitResponder
 {
-    public const string FRUIT_TAG = "Fruit";
-
-    [SerializeReference] Sensor _body;
-
-    [SerializeField] int _visualCapacity;
+    [SerializeField] int _visualCapacity = 5;
 
     public UnityEvent OnScore;
 
@@ -20,15 +16,8 @@ public class Basket : MonoBehaviour
         _inside = new Queue<Fruit>(_visualCapacity * 2);
     }
 
-    private void Start()
+    protected override void OnFruitEnter(Fruit item)
     {
-        _body.OnEnter.AddListener(OnEnterBody);
-    }
-
-    private void OnEnterBody(Collider2D collider)
-    {
-        if (collider.TryGetComponent<Fruit>(out var item) == false) return;
-
         _inside.Enqueue(item);
         item.transform.SetParent(transform);
 

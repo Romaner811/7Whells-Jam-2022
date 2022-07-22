@@ -1,18 +1,35 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Sensor : MonoBehaviour
+public class Sensor : Sensor<Collider2D>
 {
-    public UnityEvent<Collider2D> OnEnter;
-    public UnityEvent<Collider2D> OnExit;
-
-    private void OnTriggerEnter2D(Collider2D collider)
+    protected override bool TryGetSubject(Collider2D collider, out Collider2D subject)
     {
-        OnEnter?.Invoke(collider);
+        subject = collider;
+        return true;
+    }
+}
+
+public abstract class Sensor<T> : MonoBehaviour
+{
+    public UnityEvent<T> OnEnter;
+    public UnityEvent<T> OnExit;
+
+    protected abstract bool TryGetSubject(Collider2D collider, out T subject);
+
+    protected virtual void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (TryGetSubject(collider, out var subject))
+        {
+            OnEnter?.Invoke(subject);
+        }
     }
 
-    private void OnTriggerExit2D(Collider2D collider)
+    protected virtual void OnTriggerExit2D(Collider2D collider)
     {
-        OnExit?.Invoke(collider);
+        if (TryGetSubject(collider, out var subject))
+        {
+            OnExit?.Invoke(subject);
+        }
     }
 }
