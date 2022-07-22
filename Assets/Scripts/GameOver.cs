@@ -10,6 +10,7 @@ public class GameOver : MonoBehaviour
     {
         manager.OnGameOVer += () =>
         {
+            Debug.Log("GAMVE OVER");
             gameObject.SetActive(true);
         };
     }
