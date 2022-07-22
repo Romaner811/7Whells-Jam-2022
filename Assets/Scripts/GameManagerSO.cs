@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [CreateAssetMenu()]
 public class GameManagerSO : ScriptableObject
@@ -10,6 +10,8 @@ public class GameManagerSO : ScriptableObject
 
     public int Score { get; private set; }
     public int HP { get; private set; }
+
+    public event System.Action OnGameOVer;
 
     private void OnEnable()
     {
@@ -31,6 +33,11 @@ public class GameManagerSO : ScriptableObject
         UpdateLife();
     }
 
+    public void Restart()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     void UpdateLife()
     {
         if (HP < 0)
@@ -43,5 +50,6 @@ public class GameManagerSO : ScriptableObject
     {
         Debug.Log("GAMVE OVER");
         Time.timeScale = 0;
+        OnGameOVer?.Invoke();
     }
 }
