@@ -376,5 +376,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Basket
       objectReference: {fileID: 0}
+    - target: {fileID: 1958722540416862725, guid: a7314cf7ecd5444c091c94f1dae4afe5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226311193659531519, guid: a7314cf7ecd5444c091c94f1dae4afe5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -169231395, guid: 5e505890e81ac2c4bb878778061db4f4, type: 3}
+    - target: {fileID: 7579119901625449446, guid: a7314cf7ecd5444c091c94f1dae4afe5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 501460537, guid: 5e505890e81ac2c4bb878778061db4f4, type: 3}
+    - target: {fileID: 7927570541887710910, guid: a7314cf7ecd5444c091c94f1dae4afe5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7314cf7ecd5444c091c94f1dae4afe5, type: 3}
