@@ -49,5 +49,5 @@ MonoBehaviour:
   _interval: 1
   _intervalVariance: 3
   _origin: {fileID: 19387130186678908}
-  _force: 4
-  _forceVariance: 20
+  _force: 5
+  _forceVariance: 8

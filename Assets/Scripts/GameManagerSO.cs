@@ -11,7 +11,7 @@ public class GameManagerSO : ScriptableObject
     public int Score { get; private set; }
     public int HP { get; private set; }
 
-    public event System.Action OnGameOVer;
+    public System.Action OnGameOVer;
 
     private void OnEnable()
     {
@@ -40,7 +40,7 @@ public class GameManagerSO : ScriptableObject
 
     void UpdateLife()
     {
-        if (HP < 0)
+        if (HP <= 0)
         {
             GameOver();
         }
@@ -48,8 +48,7 @@ public class GameManagerSO : ScriptableObject
 
     void GameOver()
     {
-        Debug.Log("GAMVE OVER");
-        Time.timeScale = 0;
         OnGameOVer?.Invoke();
+        Time.timeScale = 0;
     }
 }
