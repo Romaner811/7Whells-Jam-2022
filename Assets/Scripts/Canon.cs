@@ -20,12 +20,6 @@ public class Canon : MonoBehaviour
 
     private Coroutine _shootingCoroutine;
 
-    private void OnValidate()
-    {
-        if (_origin == null) _origin = transform;
-        Debug.Assert(_bullet != null, $"{this.name}: needs {nameof(_bullet)}", this);
-    }
-
     private Rigidbody2D GetBulletPrefab(int idx = ANY_BULLET)
     {
         if (idx == ANY_BULLET)
@@ -47,12 +41,14 @@ public class Canon : MonoBehaviour
 
     public Rigidbody2D Shoot(Rigidbody2D subject)
     {
-        subject.transform.position = Vector3.zero;
-        subject.transform.eulerAngles = Vector3.zero;
+        subject.transform.localPosition = Vector3.zero;
+        subject.transform.localRotation = Quaternion.identity;
 
-        float force = Mathf.Max(0f, _force + _forceVariance * Random.value);
+        Debug.Log($"{subject.transform.localEulerAngles}");
 
-        subject.AddForce(Vector2.right * force, ForceMode2D.Impulse);
+        float forceMagnitude = Mathf.Max(0f, _force + _forceVariance * Random.value);
+
+        subject.AddForce(_origin.right * forceMagnitude, ForceMode2D.Impulse);
 
         OnShoot?.Invoke(subject);
 
@@ -61,7 +57,7 @@ public class Canon : MonoBehaviour
 
     private IEnumerator Shooter_Coroutine()
     {
-        Debug.Log("ShootStart");
+        Debug.Log($"{this.name}: ShootStart");
 
         while (enabled)
         {
@@ -72,18 +68,18 @@ public class Canon : MonoBehaviour
 
             if (enabled == false) break;
 
-            Debug.Log("Pof!");
+            Debug.Log($"{this.name}: Pof!", this);
 
             Shoot();
         }
 
-        Debug.Log("ShootStop");
+        Debug.Log($"{this.name}: ShootStop");
         _shootingCoroutine = null;
     }
 
     private void OnEnable()
     {
-        Debug.Log($"{this.name}: OnEnable");
+        Debug.Log($"{this.name}: OnEnable", this);
 
         _shootingCoroutine = StartCoroutine(Shooter_Coroutine());
     }
@@ -93,4 +89,24 @@ public class Canon : MonoBehaviour
     //    Debug.Log($"{this.name}: OnDisable");
     //    // dont't kill, let it end naturally. //StopCoroutine(_shootingCoroutine);
     //}
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        if (_origin == null) _origin = transform;
+        Debug.Assert(_bullet != null, $"{this.name}: needs {nameof(_bullet)}", this);
+    }
+
+    static readonly Color GIZMO_COLOR = new Color(0f, 1f, 0f);
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = GIZMO_COLOR;
+
+        Gizmos.DrawWireSphere(_origin.position, 0.1f);
+
+        Gizmos.DrawLine(
+            _origin.position,
+            _origin.position + _force * _origin.right
+            );
+    }
+#endif
 }
