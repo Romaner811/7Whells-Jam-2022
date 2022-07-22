@@ -10,5 +10,6 @@ public class Ninja : FruitResponder
     protected override void OnFruitEnter(Fruit item)
     {
         OnFruit?.Invoke();
+        item.Destory();
     }
 }

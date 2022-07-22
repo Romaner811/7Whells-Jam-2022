@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d214319b37bf043178e9a3a454eafa9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sensor: {fileID: 0}
+  _sensor: {fileID: 6173984967038833520}
   OnFruit:
     m_PersistentCalls:
       m_Calls: []
@@ -302,3 +302,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1428319114898827213, guid: 3cb31292443f54fc49b0b633a1b4be4b, type: 3}
   m_PrefabInstance: {fileID: 2658048991444362961}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6173984967038833520 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8164234356904424865, guid: 3cb31292443f54fc49b0b633a1b4be4b, type: 3}
+  m_PrefabInstance: {fileID: 2658048991444362961}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92c14c81ccbb8402a80f218df9aa29e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

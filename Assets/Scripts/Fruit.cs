@@ -27,4 +27,9 @@ public class Fruit : MonoBehaviour
         OnHit?.Invoke();
     }
 
+    public void Destory()
+    {
+        Debug.Log("destorying");
+        Destroy(gameObject);
+    }
 }

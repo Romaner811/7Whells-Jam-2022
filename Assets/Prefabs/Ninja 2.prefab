@@ -93,6 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7404781488999755181}
+  - component: {fileID: 536884762346273025}
   m_Layer: 0
   m_Name: Ninja 2
   m_TagString: Untagged
@@ -117,6 +118,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &536884762346273025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7404781488999755178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d214319b37bf043178e9a3a454eafa9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sensor: {fileID: 8696896302444512116}
+  OnFruit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7404781489603197590
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,3 +318,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1428319114898827213, guid: 3cb31292443f54fc49b0b633a1b4be4b, type: 3}
   m_PrefabInstance: {fileID: 719655647566558933}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8696896302444512116 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8164234356904424865, guid: 3cb31292443f54fc49b0b633a1b4be4b, type: 3}
+  m_PrefabInstance: {fileID: 719655647566558933}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92c14c81ccbb8402a80f218df9aa29e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
