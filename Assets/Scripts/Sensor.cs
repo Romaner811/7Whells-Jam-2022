@@ -3,16 +3,16 @@ using UnityEngine.Events;
 
 public class Sensor : MonoBehaviour
 {
-    public UnityEvent OnEnter;
-    public UnityEvent OnExit;
+    public UnityEvent<Collider2D> OnEnter;
+    public UnityEvent<Collider2D> OnExit;
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        OnEnter?.Invoke();
+        OnEnter?.Invoke(collider);
     }
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-        OnExit?.Invoke();
+        OnExit?.Invoke(collider);
     }
 }
