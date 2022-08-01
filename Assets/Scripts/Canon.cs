@@ -44,8 +44,6 @@ public class Canon : MonoBehaviour
         subject.transform.localPosition = Vector3.zero;
         subject.transform.localRotation = Quaternion.identity;
 
-        Debug.Log($"{subject.transform.localEulerAngles}");
-
         float forceMagnitude = Mathf.Max(0f, _force + _forceVariance * Random.value);
 
         subject.AddForce(_origin.right * forceMagnitude, ForceMode2D.Impulse);
@@ -57,7 +55,6 @@ public class Canon : MonoBehaviour
 
     private IEnumerator Shooter_Coroutine()
     {
-        Debug.Log($"{this.name}: ShootStart");
 
         while (enabled)
         {
@@ -68,19 +65,13 @@ public class Canon : MonoBehaviour
 
             if (enabled == false) break;
 
-            Debug.Log($"{this.name}: Pof!", this);
-
             Shoot();
         }
-
-        Debug.Log($"{this.name}: ShootStop");
         _shootingCoroutine = null;
     }
 
     private void OnEnable()
     {
-        Debug.Log($"{this.name}: OnEnable", this);
-
         _shootingCoroutine = StartCoroutine(Shooter_Coroutine());
     }
 

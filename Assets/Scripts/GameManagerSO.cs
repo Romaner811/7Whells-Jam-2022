@@ -22,13 +22,11 @@ public class GameManagerSO : ScriptableObject
     public void AddScore()
     {
         Score += 10;
-        Debug.Log($"Score: {Score}", this);
     }
 
     public void Damage()
     {
         HP -= 1;
-        Debug.Log($"HP: {HP}", this);
 
         UpdateLife();
     }
